@@ -11,15 +11,16 @@ struct SearchBarView: View {
     @FocusState private var textFieldIsActive : Bool
     @Binding var searchText : String
     var onSearchDidChange : (String) -> Void = {_ in}
-    var onSearch : (String) -> Void = {_ in}
+    var onSearch : () -> Void = {}
     
     var body: some View {
-            HStack {
-                Image(systemName: "magnifyingglass")
-                    .foregroundColor(searchText.isEmpty ? .gray : .black)
-                
-                TextField("Search", text: $searchText) {
-                    onSearch(searchText)
+        HStack {
+            Image(systemName: "magnifyingglass")
+                .foregroundColor(searchText.isEmpty ? .gray : .black)
+            
+            TextField("Search", text: $searchText)
+                .onSubmit {
+                    onSearch()
                 }
                 .focused($textFieldIsActive)
                 .autocorrectionDisabled(true)
@@ -37,19 +38,17 @@ struct SearchBarView: View {
                 .onChange(of: searchText) { newValue in
                     onSearchDidChange(newValue)
                 }
-            }
-            .font(.headline)
-            .padding()
-            .background(
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(.gray.opacity(0.1))
-                    .shadow(color:.black.opacity(0.15),
-                            radius: 10,
-                            x: 0, y: 0)
-            )
-            
-        
-
+                .submitLabel(.search)
+        }
+        .font(.headline)
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 20)
+                .fill(.gray.opacity(0.1))
+                .shadow(color:.black.opacity(0.15),
+                        radius: 10,
+                        x: 0, y: 0)
+        )
     }
 }
 

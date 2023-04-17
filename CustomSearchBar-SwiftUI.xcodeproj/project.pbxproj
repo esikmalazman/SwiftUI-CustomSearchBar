@@ -55,9 +55,9 @@
 			children = (
 				7F07DD3529ED815C006DE4BA /* CustomSearchBar_SwiftUIApp.swift */,
 				7F07DD3729ED815C006DE4BA /* ContentView.swift */,
+				7F07DD4329ED8868006DE4BA /* SearchBarView.swift */,
 				7F07DD3929ED815E006DE4BA /* Assets.xcassets */,
 				7F07DD3B29ED815E006DE4BA /* Preview Content */,
-				7F07DD4329ED8868006DE4BA /* SearchBarView.swift */,
 			);
 			path = "CustomSearchBar-SwiftUI";
 			sourceTree = "<group>";

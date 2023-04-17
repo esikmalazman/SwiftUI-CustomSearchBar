@@ -8,12 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var searchText : String = ""
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            SearchBarView(searchText: $searchText) { newQuery in
+                print("Searched : \(newQuery)")
+            } onSearch: {
+                print("Tap Return Search : \(searchText)")
+            }
         }
         .padding()
     }
